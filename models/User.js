@@ -1,4 +1,4 @@
-const { required } = require('joi')
+const validator = require('validator')
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema ({
@@ -11,6 +11,10 @@ const UserSchema = new mongoose.Schema ({
     email:{
         type: String,
         required:[true, 'Please provide a email'],
+        validate:{
+            validator:validator.isEmail, // better approach than the other email usage
+            message:'Please provide valid email'
+        }
         
     },
     password:{
