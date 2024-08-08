@@ -9,19 +9,19 @@
 
 #### Connect To DB
 
-- [] get connection string
-- [] setup .env with MONGO_URL variable and assign the value
-- [] import 'dotenv' and setup package
-- [] import connect() and invoke in the starter
-- [] restart the server
-- [] mongoose V6 info
+- [x] get connection string
+- [x] setup .env with MONGO_URL variable and assign the value
+- [x] import 'dotenv' and setup package
+- [x] import connect() and invoke in the starter
+- [x] restart the server
+- [x] mongoose V6 info
 
 #### Basic Routes and Middleware
 
-- [] setup / GET Route
-- [] setup express.json() middleware
-- [] setup 404 and errorHandler middleware
-- [] import 'exress-async-errors' package
+- [x] setup / GET Route
+- [x] setup express.json() middleware
+- [x] setup 404 and errorHandler middleware
+- [x] import 'exress-async-errors' package
 
 #### 404 vs ErrorHandler Middleware
 
