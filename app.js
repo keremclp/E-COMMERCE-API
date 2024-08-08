@@ -8,6 +8,9 @@ const app = express()
 // rest of packages
 const morgan = require('morgan') 
 
+// routers
+const authRouter = require("./routes/authRoutes")
+
 // database 
 const connectDB = require('./db/connect')
 
@@ -23,6 +26,8 @@ app.use(express.json())
 app.get('/',(req,res)=>{
     res.send('Hello World')
 })
+
+app.use("/api/v1/auth", authRouter);
 
 app.use(notFoundMiddlewear)
 app.use(errorHandlerMiddlewear)
