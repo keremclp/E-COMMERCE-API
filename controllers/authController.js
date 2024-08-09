@@ -21,7 +21,14 @@ const register = async (req,res) =>{
     // we are going to send the id, role(role-based authentication)
     const tokenUser = { name:user.name, userId:user._id, role:user.role }
     const token = createJWT({ payload:tokenUser })
-    res.status(StatusCodes.CREATED).json({ user:tokenUser, token })
+    
+    const oneDay = 1000 * 60 * 60 * 24
+    res.cookie('token', token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + oneDay),
+    })
+
+    res.status(StatusCodes.CREATED).json({ user:tokenUser })
 }
 const logout = (req,res) =>{
     res.send('logout')
