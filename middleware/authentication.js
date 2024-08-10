@@ -1,4 +1,4 @@
-const CustomError =require('../errors')
+const CustomError = require('../errors')
 const { isTokenValid } = require('../utils')
 
 const authenticateUser = async (req,res,next)=>{
@@ -17,6 +17,16 @@ const authenticateUser = async (req,res,next)=>{
     }
 }
 
-module.exports = {
-    authenticateUser
+const authorizePermissions = (req,res,next) =>{
+    if(req.user.role !== 'admin'){
+        throw new CustomError.UnauthorizedError('You are not authorized to perform this route')
+    }
+    console.log('admin route');
+    next()
 }
+
+
+module.exports = {
+  authenticateUser,
+  authorizePermissions,
+};
