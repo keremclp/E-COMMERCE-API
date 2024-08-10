@@ -2,6 +2,7 @@ const User = require('../models/User')
 const { StatusCodes } = require('http-status-codes')
 const CustomError = require('../errors')
 const getAllUser = async (req,res) =>{
+    // console.log(req.user); // sent from authenticateUser by suing next()
     // remove the password by select func
     const users = await User.find({ role:'user' }).select('-password')
     if(!users){
