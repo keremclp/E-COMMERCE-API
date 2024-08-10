@@ -10,7 +10,7 @@ const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 // routers
 const authRouter = require("./routes/authRoutes")
-
+const userRoutes = require('./routes/userRoutes')
 // database 
 const connectDB = require('./db/connect')
 
@@ -33,6 +33,7 @@ app.get('/api/v1',(req,res)=>{
 })
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRoutes);
 
 app.use(notFoundMiddlewear)
 app.use(errorHandlerMiddlewear)
