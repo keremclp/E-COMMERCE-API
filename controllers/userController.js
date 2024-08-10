@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const { StatusCodes } = require('http-status-codes')
 const CustomError = require('../errors')
-const { createTokenUser, attachCookiesToResponse } = require('../utils')
+const { createTokenUser, attachCookiesToResponse, checkPermissions } = require('../utils')
 const getAllUser = async (req,res) =>{
     // console.log(req.user); // sent from authenticateUser by suing next()
     // remove the password by select func
@@ -17,6 +17,7 @@ const getSingleUser = async (req,res) =>{
     if(!user){
         throw new CustomError.NotFoundError("User not found");
     }
+    checkPermissions(req.user, user._id)
 
     res.status(StatusCodes.OK).json({ user })
 }
