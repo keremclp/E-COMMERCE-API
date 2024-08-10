@@ -1,16 +1,16 @@
-const getAllUser = async (res,req) =>{
-    res.send('getAllUser')
-}
-const getSingleUser = async (res,req) =>{
+    const getAllUser = async (req,res) =>{
+        res.send('getAllUser')
+    }
+const getSingleUser = async (req,res) =>{
     res.send('getSingleUser')
 }
-const showCurrentUser = async (res,req) =>{
+const showCurrentUser = async (req,res) =>{
     res.send('showCurrentUser')
 }
-const updateUser = async (res,req) =>{
+const updateUser = async (req,res) =>{
     res.send('updateUser')
 }
-const updateUserPassword = async (res,req) =>{
+const updateUserPassword = async (req,res) =>{
     res.send("updateUserPassword");
 }
 
