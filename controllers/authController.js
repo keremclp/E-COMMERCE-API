@@ -2,8 +2,30 @@ const User = require('../models/User')
 const { StatusCodes } = require('http-status-codes')
 const CustomError = require('../errors') 
 const { attachCookiesToResponse } = require("../utils");
-const login = (req,res) =>{
-    res.send('Login')
+
+const login = async (req,res) =>{
+    const {email,password} = req.body;
+    if( !email || !password ){
+        throw new CustomError.UnauthenticatedError(
+          "Please provide both email and password"
+        );
+    }
+    const user = await User.findOne({email})
+    console.log(user);
+    
+    if(!user){
+        throw new CustomError.UnauthenticatedError("Invalid credentials");
+    }
+    const isPasswordCorrect = await user.comparePassword(password);
+    console.log(isPasswordCorrect);
+    
+    if(isPasswordCorrect){
+        throw new CustomError.UnauthenticatedError("Invalid credentials");
+    }
+
+    const tokenUser = { name:user.name, userId:user._id, role:user.role }
+    attachCookiesToResponse({res,tokenUser}) 
+    res.status(StatusCodes.OK).json({ user: tokenUser });
 }
 const register = async (req,res) =>{
     const { email,name,password } = req.body
