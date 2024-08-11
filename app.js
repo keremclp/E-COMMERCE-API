@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser')
 // routers
 const authRouter = require("./routes/authRoutes")
 const userRoutes = require('./routes/userRoutes')
+const productRoutes = require('./routes/productRoutes')
 // database 
 const connectDB = require('./db/connect')
 
@@ -34,6 +35,7 @@ app.get('/api/v1',(req,res)=>{
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/products", productRoutes);
 
 app.use(notFoundMiddlewear)
 app.use(errorHandlerMiddlewear)
