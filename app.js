@@ -8,6 +8,7 @@ const app = express()
 // rest of packages
 const morgan = require('morgan') 
 const cookieParser = require('cookie-parser')
+const fileUpload = require('express-fileupload')
 // routers
 const authRouter = require("./routes/authRoutes")
 const userRoutes = require('./routes/userRoutes')
@@ -23,6 +24,9 @@ const errorHandlerMiddlewear = require('./middleware/error-handler')
 app.use(morgan('tiny'))
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
+
+app.use(express.static('./public'))
+app.use(fileUpload())
 // routes
 app.get('/',(req,res)=>{
     res.send('Hello World')
