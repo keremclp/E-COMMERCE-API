@@ -67,7 +67,7 @@ const deleteReview = async (req,res) => {
     }
 
     checkPermissions(req.user, review.user)
-    await review.deleteOne({ _id: reviewId });
+    await review.deleteOne();
     
     res.status(StatusCodes.OK).json({ msg:'Success! Review removed' });
 }
