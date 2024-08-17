@@ -14,6 +14,7 @@ const authRouter = require("./routes/authRoutes")
 const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
+const orderRouter = require('./routes/orderRoutes')
 // database 
 const connectDB = require('./db/connect')
 
@@ -42,6 +43,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/reviews", reviewRouter);
+app.use("/api/v1/orders", orderRouter);
 
 app.use(notFoundMiddlewear)
 app.use(errorHandlerMiddlewear)
