@@ -57,3 +57,13 @@ To run this project locally, follow these steps:
    ```bash
    npm start
    
+## Environment Variables
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+JWT_LIFETIME=your_jwt_lifetime
+PORT=5000
+
+
+## Running the Application
+  ````bash
+   npm start
